@@ -1,0 +1,5 @@
+.DS_Store
+.idea/
+target/
+jackson-csv.iml
+BerlinVeniceValid.csv
