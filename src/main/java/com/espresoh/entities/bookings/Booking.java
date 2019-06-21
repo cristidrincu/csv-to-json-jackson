@@ -1,6 +1,10 @@
 package com.espresoh.entities.bookings;
 
+import com.espresoh.commons.utils.DateFormatter;
 import com.espresoh.entities.data.RawData;
+
+import java.text.ParseException;
+import java.util.Date;
 
 import static java.lang.Integer.parseInt;
 
@@ -18,8 +22,8 @@ public class Booking {
     private String stateProvince;
     private String zipCode;
     private String email;
-    private String arrivalDate;
-    private String departureDate;
+    private Date arrivalDate;
+    private Date departureDate;
     private int adultCount;
     private int childCount;
     private String arrivalTime;
@@ -37,7 +41,7 @@ public class Booking {
 
     public Booking() {}
 
-    public Booking(RawData rawData) {
+    public Booking(RawData rawData) throws ParseException {
         this.profileId = rawData.getProfileId();
         this.confirmationNumber = rawData.getConfirmationNumber();
         this.email = rawData.getEmail();
@@ -45,8 +49,8 @@ public class Booking {
         this.hotelCode = rawData.getHotelCode();
         this.adultCount = rawData.getAdultCount().isEmpty() ? 0 : parseInt(rawData.getAdultCount());
         this.childCount = rawData.getChildCount().isEmpty() ? 0 : parseInt(rawData.getChildCount());
-        this.arrivalDate = rawData.getArrivalDate();
-        this.departureDate = rawData.getDepartureDate();
+        this.arrivalDate = rawData.getArrivalDate().isEmpty() ? null : DateFormatter.formatDate(rawData.getArrivalDate(), "dd/MM/yyyy");
+        this.departureDate = rawData.getDepartureDate().isEmpty() ? null : DateFormatter.formatDate(rawData.getDepartureDate(), "dd/MM/yyyy");
         this.arrivalTime = rawData.getArrivalTime();
         this.departureTime = rawData.getDepartureTime();
         this.roomType = rawData.getRoomType();
@@ -166,19 +170,19 @@ public class Booking {
         this.email = email;
     }
 
-    public String getArrivalDate() {
+    public Date getArrivalDate() {
         return arrivalDate;
     }
 
-    public void setArrivalDate(String arrivalDate) {
+    public void setArrivalDate(Date arrivalDate) {
         this.arrivalDate = arrivalDate;
     }
 
-    public String getDepartureDate() {
+    public Date getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(String departureDate) {
+    public void setDepartureDate(Date departureDate) {
         this.departureDate = departureDate;
     }
 
