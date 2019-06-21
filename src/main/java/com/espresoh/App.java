@@ -8,6 +8,8 @@ import com.espresoh.interfaces.SchemaBuilder;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.util.StdDateFormat;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvParser;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
@@ -15,6 +17,7 @@ import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -24,9 +27,12 @@ public class App {
 
     private static final Logger logger = Logger.getLogger(App.class.getName());
 
-    public static void main( String[] args ) throws IOException {
+    public static void main( String[] args ) throws IOException, ParseException {
+
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS);
+        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        objectMapper.setDateFormat(new StdDateFormat().withColonInTimeZone(true));
         CsvMapper csvMapper = new CsvMapper();
         csvMapper.enable(CsvParser.Feature.IGNORE_TRAILING_UNMAPPABLE);
 
