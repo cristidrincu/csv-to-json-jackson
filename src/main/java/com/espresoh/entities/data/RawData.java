@@ -23,8 +23,8 @@ public class RawData {
     private String email;
     private String arrivalDate;
     private String departureDate;
-    private Integer adultCount;
-    private Integer childCount;
+    private String adultCount;
+    private String childCount;
     private String arrivalTime;
     private String departureTime;
     private String blockCode;
@@ -60,8 +60,6 @@ public class RawData {
     private String specialRequest;
     private String membershipLevel;
     private String memberNumber;
-
-    public RawData() {}
 
     public String getHotelCode() {
         return hotelCode;
@@ -231,19 +229,19 @@ public class RawData {
         this.departureDate = departureDate;
     }
 
-    public Integer getAdultCount() {
+    public String getAdultCount() {
         return adultCount;
     }
 
-    public void setAdultCount(Integer adultCount) {
+    public void setAdultCount(String adultCount) {
         this.adultCount = adultCount;
     }
 
-    public Integer getChildCount() {
+    public String getChildCount() {
         return childCount;
     }
 
-    public void setChildCount(Integer childCount) {
+    public void setChildCount(String childCount) {
         this.childCount = childCount;
     }
 
