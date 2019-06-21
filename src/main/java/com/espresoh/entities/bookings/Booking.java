@@ -2,6 +2,8 @@ package com.espresoh.entities.bookings;
 
 import com.espresoh.entities.data.RawData;
 
+import static java.lang.Integer.parseInt;
+
 public class Booking {
 
     private String hotelCode;
@@ -12,16 +14,14 @@ public class Booking {
     private String alternateId;
     private String address1;
     private String address2;
-    private String address3;
-    private String address4;
     private String countryCode;
     private String stateProvince;
     private String zipCode;
     private String email;
     private String arrivalDate;
     private String departureDate;
-    private Integer adultCount;
-    private Integer childCount;
+    private int adultCount;
+    private int childCount;
     private String arrivalTime;
     private String departureTime;
     private String roomType;
@@ -43,8 +43,8 @@ public class Booking {
         this.email = rawData.getEmail();
         this.reservationStatus = rawData.getReservationStatus();
         this.hotelCode = rawData.getHotelCode();
-        this.adultCount = rawData.getAdultCount();
-        this.childCount = rawData.getChildCount();
+        this.adultCount = rawData.getAdultCount().isEmpty() ? 0 : parseInt(rawData.getAdultCount());
+        this.childCount = rawData.getChildCount().isEmpty() ? 0 : parseInt(rawData.getChildCount());
         this.arrivalDate = rawData.getArrivalDate();
         this.departureDate = rawData.getDepartureDate();
         this.arrivalTime = rawData.getArrivalTime();
@@ -60,8 +60,8 @@ public class Booking {
         this.otherRevenueCheckedOutGuest = rawData.getOtherRevenueCheckedOutGuest();
         this.projectedRevenue = rawData.getProjectedRevenue();
         //currency? where do they get that, it's not in the csv file
-        this.address1 = rawData.getAddress1();
-        this.address2 = rawData.getAddress2();
+        this.address1 = rawData.getAddress1().isEmpty() ? "" : rawData.getAddress1();
+        this.address2 = rawData.getAddress2().isEmpty() ? "" : rawData.getAddress2();
         //city? where do they get that, it's not in the csv file
         this.countryCode = rawData.getCountryCode();
         this.zipCode = rawData.getZipCode();
@@ -132,22 +132,6 @@ public class Booking {
 
     public void setAddress2(String address2) {
         this.address2 = address2;
-    }
-
-    public String getAddress3() {
-        return address3;
-    }
-
-    public void setAddress3(String address3) {
-        this.address3 = address3;
-    }
-
-    public String getAddress4() {
-        return address4;
-    }
-
-    public void setAddress4(String address4) {
-        this.address4 = address4;
     }
 
     public String getCountryCode() {
@@ -321,8 +305,6 @@ public class Booking {
                 ", alternateId='" + alternateId + '\'' +
                 ", address1='" + address1 + '\'' +
                 ", address2='" + address2 + '\'' +
-                ", address3='" + address3 + '\'' +
-                ", address4='" + address4 + '\'' +
                 ", countryCode='" + countryCode + '\'' +
                 ", stateProvince='" + stateProvince + '\'' +
                 ", zipCode='" + zipCode + '\'' +
