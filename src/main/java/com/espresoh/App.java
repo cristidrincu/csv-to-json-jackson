@@ -26,12 +26,12 @@ public class App {
         csvMapper.enable(CsvParser.Feature.IGNORE_TRAILING_UNMAPPABLE);
 
         SchemaBuilder bookingSchemaBuilder = new RawDataSchemaBuilder();
-        CsvSchema schemaTest = bookingSchemaBuilder.buildEntitySchema(RawData.class);
+        CsvSchema rawDataSchema = bookingSchemaBuilder.buildEntitySchema(RawData.class);
 
         List<Booking> bookings = new ArrayList<>();
 
-        try (Reader reader = new FileReader("Berlin and Venice 4 - 6 May.csv")) {
-            MappingIterator<RawData> mappingIterator = csvMapper.readerFor(RawData.class).with(schemaTest).readValues(reader);
+        try (Reader reader = new FileReader("sample-data/Berlin and Venice 4 - 6 May.csv")) {
+            MappingIterator<RawData> mappingIterator = csvMapper.readerFor(RawData.class).with(rawDataSchema).readValues(reader);
             while(mappingIterator.hasNext()) {
                 RawData current = mappingIterator.next();
                 Booking booking = new Booking(current);
