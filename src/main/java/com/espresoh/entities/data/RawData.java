@@ -1,7 +1,5 @@
 package com.espresoh.entities.data;
 
-import java.math.BigDecimal;
-
 public class RawData {
 
     private String hotelCode;
