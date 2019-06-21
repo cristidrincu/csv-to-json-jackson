@@ -1,8 +1,10 @@
-package com.espresoh;
+package com.espresoh.entities.data;
 
-public class Booking {
+import java.math.BigDecimal;
 
-    private String resortCode;
+public class RawData {
+
+    private String hotelCode;
     private String profileId;
     private String reservationNameId;
     private String confirmationNumber;
@@ -16,15 +18,15 @@ public class Booking {
     private String address2;
     private String address3;
     private String address4;
-    private String country;
-    private String state;
+    private String countryCode;
+    private String stateProvince;
     private String zipCode;
     private String gender;
-    private String emailAddress;
+    private String email;
     private String arrivalDate;
     private String departureDate;
-    private String nrOfAdults;
-    private String nrOfChildren;
+    private Integer adultCount;
+    private Integer childCount;
     private String arrivalTime;
     private String departureTime;
     private String blockCode;
@@ -61,7 +63,15 @@ public class Booking {
     private String membershipLevel;
     private String memberNumber;
 
-    public Booking() {}
+    public RawData() {}
+
+    public String getHotelCode() {
+        return hotelCode;
+    }
+
+    public void setHotelCode(String hotelCode) {
+        this.hotelCode = hotelCode;
+    }
 
     public String getProfileId() {
         return profileId;
@@ -71,12 +81,12 @@ public class Booking {
         this.profileId = profileId;
     }
 
-    public String getResortCode() {
-        return resortCode;
+    public String getReservationNameId() {
+        return reservationNameId;
     }
 
-    public void setResortCode(String resortCode) {
-        this.resortCode = resortCode;
+    public void setReservationNameId(String reservationNameId) {
+        this.reservationNameId = reservationNameId;
     }
 
     public String getConfirmationNumber() {
@@ -85,14 +95,6 @@ public class Booking {
 
     public void setConfirmationNumber(String confirmationNumber) {
         this.confirmationNumber = confirmationNumber;
-    }
-
-    public String getReservationNameId() {
-        return reservationNameId;
-    }
-
-    public void setReservationNameId(String reservationNameId) {
-        this.reservationNameId = reservationNameId;
     }
 
     public String getReservationStatus() {
@@ -175,20 +177,20 @@ public class Booking {
         this.address4 = address4;
     }
 
-    public String getCountry() {
-        return country;
+    public String getCountryCode() {
+        return countryCode;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
     }
 
-    public String getState() {
-        return state;
+    public String getStateProvince() {
+        return stateProvince;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setStateProvince(String stateProvince) {
+        this.stateProvince = stateProvince;
     }
 
     public String getZipCode() {
@@ -207,12 +209,12 @@ public class Booking {
         this.gender = gender;
     }
 
-    public String getEmailAddress() {
-        return emailAddress;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getArrivalDate() {
@@ -231,20 +233,20 @@ public class Booking {
         this.departureDate = departureDate;
     }
 
-    public String getNrOfAdults() {
-        return nrOfAdults;
+    public Integer getAdultCount() {
+        return adultCount;
     }
 
-    public void setNrOfAdults(String nrOfAdults) {
-        this.nrOfAdults = nrOfAdults;
+    public void setAdultCount(Integer adultCount) {
+        this.adultCount = adultCount;
     }
 
-    public String getNrOfChildren() {
-        return nrOfChildren;
+    public Integer getChildCount() {
+        return childCount;
     }
 
-    public void setNrOfChildren(String nrOfChildren) {
-        this.nrOfChildren = nrOfChildren;
+    public void setChildCount(Integer childCount) {
+        this.childCount = childCount;
     }
 
     public String getArrivalTime() {
@@ -529,9 +531,9 @@ public class Booking {
 
     @Override
     public String toString() {
-        return "Booking{" +
-                "resortCode='" + resortCode + '\'' +
-                ", profileId='" + profileId + '\'' +
+        return "RawData{" +
+                "hotelCode='" + hotelCode + '\'' +
+                ", profileId=" + profileId +
                 ", reservationNameId='" + reservationNameId + '\'' +
                 ", confirmationNumber='" + confirmationNumber + '\'' +
                 ", reservationStatus='" + reservationStatus + '\'' +
@@ -544,15 +546,15 @@ public class Booking {
                 ", address2='" + address2 + '\'' +
                 ", address3='" + address3 + '\'' +
                 ", address4='" + address4 + '\'' +
-                ", country='" + country + '\'' +
-                ", state='" + state + '\'' +
+                ", countryCode='" + countryCode + '\'' +
+                ", stateProvince='" + stateProvince + '\'' +
                 ", zipCode='" + zipCode + '\'' +
                 ", gender='" + gender + '\'' +
-                ", emailAddress='" + emailAddress + '\'' +
+                ", email='" + email + '\'' +
                 ", arrivalDate='" + arrivalDate + '\'' +
                 ", departureDate='" + departureDate + '\'' +
-                ", nrOfAdults='" + nrOfAdults + '\'' +
-                ", nrOfChildren='" + nrOfChildren + '\'' +
+                ", adultCount='" + adultCount + '\'' +
+                ", childCount='" + childCount + '\'' +
                 ", arrivalTime='" + arrivalTime + '\'' +
                 ", departureTime='" + departureTime + '\'' +
                 ", blockCode='" + blockCode + '\'' +
