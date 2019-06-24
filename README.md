@@ -1,0 +1,1 @@
+Sample app for reading from a csv file, map the values to POJOs and export them to json.
