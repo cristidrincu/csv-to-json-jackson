@@ -33,6 +33,7 @@ public class App {
         objectMapper.enable(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS);
         objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         objectMapper.setDateFormat(new StdDateFormat().withColonInTimeZone(true));
+
         CsvMapper csvMapper = new CsvMapper();
         csvMapper.enable(CsvParser.Feature.IGNORE_TRAILING_UNMAPPABLE);
 
