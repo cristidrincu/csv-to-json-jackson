@@ -57,6 +57,6 @@ public class App {
         String profilesJson =  objectMapper.writeValueAsString(profiles);
 
         logger.log(Level.INFO, bookingsJson);
-        logger.log(Level.INFO,profilesJson);
+        logger.log(Level.INFO, profilesJson);
     }
 }
